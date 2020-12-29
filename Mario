@@ -1,0 +1,38 @@
+#include <cs50.h>
+#include <stdio.h>
+
+//for style. Allow the whole chunk to be placed at the bottom 
+int get_positive_int(string prompt);
+
+//always have this in your code
+int main(void)
+
+{
+    int number = get_positive_int("Height: "); //to ask user for a number
+   
+    for (int height = 0; height < number; 
+         height++) // for column. for height less than number is the condition. codes count from 0 instead of 1. ++ means +1 each loop
+    {
+        for (int dots = number - height - 2; dots >= 0; dots--)
+        {
+            printf(" "); //print empty spaces
+        }
+        for (int row = 0; row <= height; row++) // for rows
+        {
+            printf("#");
+        }
+        printf("\n");
+    }
+}
+
+//the chunk for asking number form user 
+int get_positive_int(string prompt) 
+{
+    int number; 
+    do // do loop for runing code at least once
+    {
+        number = get_int("%s", prompt);
+    }
+    while (number < 1 || number > 8); // condition to fit the criteria of 1 to 8 including 1 and 8 
+    return number; //will ask again if anything but 1 to 8 
+}
